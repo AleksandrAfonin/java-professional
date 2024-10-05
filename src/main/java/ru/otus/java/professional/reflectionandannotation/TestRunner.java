@@ -102,6 +102,9 @@ public class TestRunner {
       } catch (IllegalAccessException | InvocationTargetException e) {
         System.out.println("Filed");
         filedTests.getAndIncrement();
+      } catch (Exception e){
+        System.out.println("Filed");
+        filedTests.getAndIncrement();
       }
     });
     if (beforeAfterMethods[1] != null) {
