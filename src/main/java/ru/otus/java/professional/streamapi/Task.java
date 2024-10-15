@@ -3,9 +3,9 @@ package ru.otus.java.professional.streamapi;
 public class Task {
   private long id;
   private String title;
-  private String status;
+  private Status status;
 
-  public String getStatus() {
+  public Status getStatus() {
     return status;
   }
 
@@ -13,7 +13,7 @@ public class Task {
     return id;
   }
 
-  public Task(long id, String title, String status) {
+  public Task(long id, String title, Status status) {
     this.id = id;
     this.title = title;
     this.status = status;
