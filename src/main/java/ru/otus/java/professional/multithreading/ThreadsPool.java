@@ -31,17 +31,20 @@ public class ThreadsPool {
 
   public void shutdown() {
     isRun = false;
+    for(Performing thread : threads){
+      thread.interrupt();
+    }
   }
 
   private class Performing extends Thread {
-    private Runnable task = null;
-
     @Override
     public void run() {
       while (isRun) {
-        task = tasks.poll();
-        if (task != null) {
+        try {
+          Runnable task = tasks.take();
           task.run();
+        } catch (InterruptedException e) {
+          Thread.currentThread().interrupt();
         }
       }
     }

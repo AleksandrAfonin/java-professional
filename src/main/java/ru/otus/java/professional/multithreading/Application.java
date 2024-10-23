@@ -9,7 +9,7 @@ public class Application {
         try {
           Thread.sleep(300);
         } catch (InterruptedException e) {
-          throw new RuntimeException(e);
+          Thread.currentThread().interrupt();
         }
         System.out.println(Thread.currentThread().getName() + "  Iteration: " + i);
       }
@@ -20,7 +20,7 @@ public class Application {
         try {
           Thread.sleep(500);
         } catch (InterruptedException e) {
-          throw new RuntimeException(e);
+          Thread.currentThread().interrupt();
         }
         System.out.println(Thread.currentThread().getName() + "  Iteration: " + i);
       }
@@ -31,7 +31,7 @@ public class Application {
         try {
           Thread.sleep(100);
         } catch (InterruptedException e) {
-          throw new RuntimeException(e);
+          Thread.currentThread().interrupt();
         }
         System.out.println(Thread.currentThread().getName() + "  Iteration: " + i);
       }
@@ -43,6 +43,5 @@ public class Application {
 
     Thread.sleep(7000);
     threadsPool.shutdown();
-    //threadsPool.execute(task1); // IllegalStateException
   }
 }
