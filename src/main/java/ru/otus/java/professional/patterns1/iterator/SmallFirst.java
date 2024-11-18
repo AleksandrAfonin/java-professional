@@ -18,15 +18,12 @@ public class SmallFirst<T> implements Iterator<T> {
 
   @Override
   public boolean hasNext() {
-    if (countSize == itemsSize) {
-      return false;
-    }
-    return true;
+    return countSize != itemsSize;
   }
 
   @Override
   public T next() {
-    if (countSize == itemsSize) {
+    if (!hasNext()) {
       throw new NoSuchElementException();
     }
     switch (countMatryoshkas) {

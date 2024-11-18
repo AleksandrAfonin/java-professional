@@ -18,15 +18,12 @@ public class ColorFirst<T> implements Iterator<T> {
 
   @Override
   public boolean hasNext() {
-    if (countMatryoshkas == 4) {
-      return false;
-    }
-    return true;
+    return countMatryoshkas != 4;
   }
 
   @Override
   public T next() {
-    if (countMatryoshkas == 4) {
+    if (!hasNext()) {
       throw new NoSuchElementException();
     }
     switch (countMatryoshkas) {
