@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ItemsDao {
+  private Connection connection;
   private PreparedStatement getItemStatement;
   private PreparedStatement addItemStatement;
   private PreparedStatement updateItemStatement;
@@ -16,7 +17,12 @@ public class ItemsDao {
   private PreparedStatement returnIdItemStatement;
   private PreparedStatement getAllItemsStatement;
 
+  public Connection getConnection() {
+    return connection;
+  }
+
   public ItemsDao(Connection connection) {
+    this.connection = connection;
     try {
       getItemStatement = connection.prepareStatement("SELECT * FROM item WHERE id = ?");
       addItemStatement = connection.prepareStatement("INSERT INTO item (title, price) VALUES (?, ?)");
